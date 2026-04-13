@@ -1,0 +1,16 @@
+# DIoU-NMS only (no P2, no scene augmentation, no loss reweight).
+# Isolates the contribution of DIoU-based NMS for dense apple suppression.
+
+# Default loss weights
+box: 7.5
+cls: 0.5
+dfl: 1.5
+
+# DIoU-NMS
+iou: 0.65
+nms_type: diou
+max_det: 600
+
+amp: true
+val: true
+plots: true

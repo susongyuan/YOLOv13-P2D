@@ -1,0 +1,48 @@
+# Full improved config: loss reweight + scene augmentation + DIoU-NMS.
+# Used by a5_full and a4_p2_scene_aug (a4 overrides nms_type to iou).
+
+epochs: 300
+imgsz: 960
+batch: 8
+patience: 50
+optimizer: SGD
+lr0: 0.01
+lrf: 0.01
+cos_lr: true
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 5.0
+
+# Loss reweight for single-class dense detection: prioritise localisation over cls
+box: 9.0
+cls: 0.25
+dfl: 2.0
+
+# Scene-aware augmentation for apple orchard (synced with aug_only.yaml)
+hsv_h: 0.02
+hsv_s: 0.75
+hsv_v: 0.55
+degrees: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+bgr: 0.0
+mosaic: 1.0        # keep default — P2 head needs mosaic diversity
+copy_paste: 0.3    # ↑ core: simulate dense apple clusters
+mixup: 0.1         # ↑ mild regularization
+close_mosaic: 15
+
+# Dense-object suppression
+iou: 0.65
+nms_type: diou
+max_det: 600
+
+# Runtime
+workers: 0
+cache: disk
+amp: true
+val: true
+plots: true

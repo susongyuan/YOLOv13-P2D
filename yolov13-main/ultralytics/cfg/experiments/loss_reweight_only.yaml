@@ -1,0 +1,41 @@
+# Loss reweight only (no scene augmentation, no DIoU-NMS).
+# Used with P2 head to isolate structure + loss contribution.
+
+optimizer: SGD
+lr0: 0.01
+lrf: 0.01
+cos_lr: true
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 5.0
+
+# Loss reweight for single-class dense detection
+box: 9.0
+cls: 0.25
+dfl: 2.0
+
+# Default augmentation (no scene-specific changes)
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+bgr: 0.0
+mosaic: 1.0
+mixup: 0.0
+copy_paste: 0.1
+close_mosaic: 10
+
+# Standard NMS
+iou: 0.7
+nms_type: iou
+max_det: 300
+
+amp: true
+val: true
+plots: true

@@ -1,0 +1,39 @@
+# Baseline comparison plan: 4 models for fair comparison.
+# All use same imgsz/epochs/patience for fair comparison.
+
+common:
+  data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/data.yaml
+  hard_data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/hard_subset/data_hard.yaml
+  project: C:/Users/Administrator/Desktop/project/3/runs_baselines
+  epochs: 300
+  imgsz: 960
+  batch: 8
+  device: "0"
+  workers: 4
+  cache: ram
+  patience: 50
+  cos_lr: true
+  lrf: 0.01
+  lr0: 0.01
+  warmup_epochs: 3.0
+  optimizer: SGD
+
+baselines:
+  - name: yolov8s_baseline
+    kind: yolo
+    model: yolov8s.pt
+    standard: true
+
+  - name: yolo11s_baseline
+    kind: yolo
+    model: yolo11s.pt
+    standard: true
+
+  - name: rtdetr_l_baseline
+    kind: yolo
+    model: rtdetr-l.pt
+    standard: true
+
+  - name: fasterrcnn_resnet50_baseline
+    kind: fasterrcnn
+    standard: true

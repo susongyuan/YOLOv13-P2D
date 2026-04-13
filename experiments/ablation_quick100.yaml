@@ -1,0 +1,44 @@
+# Ablation validation: 100 epochs, imgsz=640.
+# Purpose: verify each improvement provides gain over baseline before full 300-epoch training.
+# a0/a1/a3 already validated at 30 epochs (runs_quick30/), only a2/a4/a5 need re-run.
+
+common:
+  data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/data.yaml
+  hard_data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/hard_subset/data_hard.yaml
+  project: C:/Users/Administrator/Desktop/project/3/runs_quick100
+  epochs: 100
+  imgsz: 640
+  batch: 16
+  device: "0"
+  workers: 0
+  cache: disk
+  patience: 20       # 20 epoch 不提升则早停，100 epoch 足够观察趋势
+  cos_lr: true
+  lrf: 0.01          # 终态 LR = 0.01 * 0.01 = 1e-4
+  lr0: 0.01
+  warmup_epochs: 5.0  # 5% warmup
+  optimizer: SGD
+
+variants:
+  # A2: Scene augmentation only (copy_paste↑ mixup↑, mosaic=default)
+  - name: a2_scene_aug
+    kind: yolo
+    model: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/apple_orchard_aug_only.yaml
+    nms_type: iou
+
+  # A4: P2 + scene augmentation + loss reweight (no DIoU)
+  - name: a4_p2_aug
+    kind: yolo
+    model_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/models/v13/yolov13s-apple-p2.yaml
+    pretrained: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/apple_orchard_improved.yaml
+    nms_type: iou
+
+  # A5: Full combination (P2 + scene aug + DIoU-NMS + loss reweight)
+  - name: a5_full
+    kind: yolo
+    model_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/models/v13/yolov13s-apple-p2.yaml
+    pretrained: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/apple_orchard_improved.yaml
+    nms_type: diou

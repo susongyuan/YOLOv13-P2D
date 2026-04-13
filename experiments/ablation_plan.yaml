@@ -1,0 +1,70 @@
+# Ablation plan: 6 variants, progressive addition.
+# a0: baseline (official YOLOv13s, default hyp, standard NMS)
+# a1: + P2 head + loss reweight
+# a2: + scene augmentation only (no P2)
+# a3: + DIoU-NMS only (no P2)
+# a4: + P2 + scene augmentation
+# a5: full (P2 + scene aug + DIoU-NMS + loss reweight)
+
+common:
+  data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/data.yaml
+  hard_data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/hard_subset/data_hard.yaml
+  project: C:/Users/Administrator/Desktop/project/3/runs_ablation
+  epochs: 300
+  imgsz: 960
+  batch: 8
+  device: "0"
+  workers: 0
+  cache: disk
+  patience: 30
+  cos_lr: true
+  lrf: 0.01
+  lr0: 0.01
+  warmup_epochs: 5.0
+  optimizer: SGD
+
+variants:
+  # A0: Official YOLOv13s baseline - default everything
+  - name: a0_official_yolov13s
+    kind: yolo
+    model: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # A1: P2 detection head + loss reweight (structure improvement)
+  - name: a1_p2_only
+    kind: yolo
+    model_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/models/v13/yolov13s-apple-p2.yaml
+    pretrained: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/loss_reweight_only.yaml
+    nms_type: iou
+
+  # A2: Scene-targeted augmentation only (data improvement)
+  - name: a2_scene_aug_only
+    kind: yolo
+    model: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/apple_orchard_aug_only.yaml
+    nms_type: iou
+
+  # A3: DIoU-NMS only (post-processing improvement)
+  - name: a3_diou_only
+    kind: yolo
+    model: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/diou_only.yaml
+    nms_type: diou
+
+  # A4: P2 + scene augmentation + loss reweight (no DIoU)
+  - name: a4_p2_scene_aug
+    kind: yolo
+    model_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/models/v13/yolov13s-apple-p2.yaml
+    pretrained: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/apple_orchard_improved.yaml
+    nms_type: iou
+
+  # A5: Full combination (P2 + scene aug + DIoU-NMS + loss reweight)
+  - name: a5_full_p2_aug_diou
+    kind: yolo
+    model_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/models/v13/yolov13s-apple-p2.yaml
+    pretrained: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13s.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/apple_orchard_improved.yaml
+    nms_type: diou
