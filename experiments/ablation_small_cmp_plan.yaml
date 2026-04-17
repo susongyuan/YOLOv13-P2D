@@ -1,0 +1,48 @@
+# Comparison models for YOLOv13s (all small/s variants)
+# Baseline reference: a0_official_yolov13s (runs_ablation)
+# Full method: a5_full_p2_aug_diou (runs_ablation)
+
+common:
+  data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/data.yaml
+  project: C:/Users/Administrator/Desktop/project/3/runs_ablation
+  epochs: 300
+  imgsz: 960
+  batch: 8
+  device: "0"
+  workers: 0
+  cache: ram
+  patience: 30
+  cos_lr: true
+  lrf: 0.01
+  lr0: 0.01
+  warmup_epochs: 5.0
+  optimizer: SGD
+
+variants:
+  # Comparison: YOLOv8s (~11.2M params)
+  - name: cmp_yolov8s
+    kind: yolo
+    model: yolov8s.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # Comparison: YOLOv9s (~7.2M params)
+  - name: cmp_yolov9s
+    kind: yolo
+    model: yolov9s.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # Comparison: YOLOv10s (~7.2M params)
+  - name: cmp_yolov10s
+    kind: yolo
+    model: yolov10s.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # Comparison: YOLO11s (~9.4M params)
+  - name: cmp_yolo11s
+    kind: yolo
+    model: yolo11s.pt
+    use_default_hyp: true
+    nms_type: iou

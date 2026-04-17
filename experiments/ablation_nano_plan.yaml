@@ -1,0 +1,65 @@
+# Ablation plan for YOLOv13n + comparison models (all nano/smallest)
+# a0n: baseline (official YOLOv13n, default hyp)
+# a5n: full (P2 + scene aug + DIoU-NMS + loss reweight)
+# Comparison: YOLOv8n, YOLO11n (all smallest variants)
+
+common:
+  data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/data.yaml
+  hard_data: C:/Users/Administrator/Desktop/project/3/MinneApple/yolo/hard_subset/data_hard.yaml
+  project: C:/Users/Administrator/Desktop/project/3/runs_nano
+  epochs: 300
+  imgsz: 960
+  batch: 16
+  device: "0"
+  workers: 0
+  cache: ram
+  patience: 30
+  cos_lr: true
+  lrf: 0.01
+  lr0: 0.01
+  warmup_epochs: 5.0
+  optimizer: SGD
+
+variants:
+  # A0n: Official YOLOv13n baseline
+  - name: a0n_yolov13n_baseline
+    kind: yolo
+    model: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13n.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # A5n: Full combination (P2 + scene aug + DIoU-NMS + loss reweight)
+  - name: a5n_yolov13n_full
+    kind: yolo
+    model_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/models/v13/yolov13n-apple-p2.yaml
+    pretrained: C:/Users/Administrator/Desktop/project/3/yolov13-main/yolov13n.pt
+    hyp_config: C:/Users/Administrator/Desktop/project/3/yolov13-main/ultralytics/cfg/experiments/apple_orchard_nano.yaml
+    nms_type: diou
+
+  # Comparison: YOLOv8n (~3.2M params)
+  - name: cmp_yolov8n
+    kind: yolo
+    model: yolov8n.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # Comparison: YOLOv9t (~2.0M params, smallest v9)
+  - name: cmp_yolov9t
+    kind: yolo
+    model: yolov9t.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # Comparison: YOLOv10n (~2.3M params)
+  - name: cmp_yolov10n
+    kind: yolo
+    model: yolov10n.pt
+    use_default_hyp: true
+    nms_type: iou
+
+  # Comparison: YOLO11n (~2.6M params)
+  - name: cmp_yolo11n
+    kind: yolo
+    model: yolo11n.pt
+    use_default_hyp: true
+    nms_type: iou

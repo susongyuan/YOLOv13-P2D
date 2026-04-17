@@ -1,0 +1,54 @@
+# Optimized config for YOLOv13n full combination.
+# Tuned based on YOLOv13s ablation lessons:
+#   - P2 head + strong augmentation conflicted on s model
+#   - val/dfl_loss was 2x baseline with aggressive settings
+#   - nano has less capacity, needs gentler augmentation
+
+epochs: 300
+imgsz: 960
+batch: 16
+patience: 30
+optimizer: SGD
+lr0: 0.01
+lrf: 0.01
+cos_lr: true
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 5.0
+
+# Loss weights - conservative for nano's limited capacity
+# s model used box=9.0 -> dfl_loss exploded to 1.85 (baseline 0.98)
+# nano needs default-level weights to avoid overwhelming P2 head
+box: 7.5       # default, avoid over-stressing P2 localization
+cls: 0.3       # slightly above default(0.5) reduction, single-class needs less cls
+dfl: 1.5       # default, critical: s model's dfl=2.0 caused P2 dfl_loss to 2x baseline
+
+# Augmentation - gentler than s model to avoid P2 learning fake patterns
+# s model copy_paste=0.3 caused P2 to learn "fake dense" patterns -> precision dropped
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+bgr: 0.0
+mosaic: 1.0          # keep default, P2 needs mosaic diversity
+copy_paste: 0.15     # halved from 0.3, reduce fake density noise
+mixup: 0.05          # halved from 0.1, lighter regularization
+close_mosaic: 20     # extended from 15, give nano more stable epochs at the end
+
+# Inference-only (stripped during training by runner)
+iou: 0.65
+nms_type: diou
+max_det: 600
+
+# Runtime
+workers: 0
+cache: disk
+amp: true
+val: true
+plots: true

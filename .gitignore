@@ -35,3 +35,23 @@ Thumbs.db
 # Temp
 *.tmp
 *.log
+
+# Claude internal
+.claude/
+
+# Thesis Word/Excel (personal documents)
+thesis_output/*.docx
+thesis_output/~$*
+thesis_output/*.xlsx
+
+# Raw papers and personal notes
+*.pdf
+apple_paper_text.txt
+开题报告*.docx
+新的开题报告*.docx
+
+# Thesis build scripts (not part of the method)
+build_thesis.py
+generate_thesis.py
+thesis_content.py
+gen_excel_check.py
