@@ -2,7 +2,7 @@
 
 A research exploration of high-density apple detection under complex orchard conditions, built upon [YOLOv13](https://github.com/iMoonLab/YOLOv13). This work demonstrates that combining a P2 high-resolution detection head, scene-targeted data augmentation, and DIoU-NMS yields measurable gains over the YOLOv13 baseline on the MinneApple benchmark — and points toward a promising direction for further work.
 
-> **Takeaway**: The full combination (A5) achieves mAP50 of **0.891** and counting Within-5 accuracy of **81%**, versus the baseline (A0) at mAP50 **0.878** / 81% Within-5, with consistent improvements in small-apple recall and hard-subset recall. The approach is not saturated; there is clear room to continue.
+> **Takeaway**: The full combination (A5) achieves mAP50 of **0.9074** and counting Within-5 accuracy of **81%**, versus the baseline (A0) at mAP50 **0.9062** / 78% Within-5, with consistent improvements in small-apple recall and hard-subset recall. The approach is not saturated; there is clear room to continue.
 
 ---
 
@@ -66,12 +66,12 @@ Activated via `nms_type: diou` in the experiment config.
 
 | Variant | mAP50 | mAP50-95 | Precision | Recall |
 |---|---|---|---|---|
-| A0 (baseline) | 0.878 | 0.546 | 0.873 | 0.837 |
-| A1 (P2 only) | 0.874 | 0.548 | 0.862 | 0.849 |
-| A2 (aug only) | 0.887 | 0.556 | 0.878 | 0.848 |
-| A3 (DIoU only) | 0.878 | 0.546 | 0.873 | 0.837 |
-| A4 (P2 + aug) | 0.882 | 0.545 | 0.871 | 0.841 |
-| **A5 (full)** | **0.891** | **0.560** | **0.878** | **0.858** |
+| A0 (baseline) | 0.9062 | 0.4937 | 0.8717 | 0.8418 |
+| A1 (P2 only) | 0.9019 | 0.4834 | 0.8763 | 0.8313 |
+| A2 (aug only) | 0.9082 | 0.4910 | 0.8752 | 0.8379 |
+| A3 (DIoU only) | 0.9062 | 0.4937 | 0.8717 | 0.8418 |
+| A4 (P2 + aug) | 0.9052 | 0.4783 | 0.8818 | 0.8260 |
+| **A5 (full)** | **0.9074** | **0.4864** | **0.8762** | **0.8405** |
 
 ### Counting Accuracy (per-image MAE/RMSE, 100-image val set)
 
