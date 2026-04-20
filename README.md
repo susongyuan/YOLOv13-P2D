@@ -177,9 +177,9 @@ python eval_nms_compare.py
 
 ## Architecture
 
-![Improved YOLOv13 Architecture](thesis_output/arch_improved.png)
+![YOLOv13-P2D Architecture](yolov13_p2d_architecture.svg)
 
-Red elements are new (P2 head). Orange boxes are DIoU-NMS replacements. Blue/green is the original YOLOv13 structure.
+The diagram shows the full YOLOv13-P2D architecture. Green dashed box: P2 detection branch (ours). Purple dashed box: DIoU-NMS (ours). Orange dashed box: scene augmentation (ours, training strategy).
 
 ---
 

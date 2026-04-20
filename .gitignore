@@ -55,3 +55,31 @@ build_thesis.py
 generate_thesis.py
 thesis_content.py
 gen_excel_check.py
+
+# Thesis formatting/polishing scripts (local tools)
+format_thesis.py
+deep_polish.py
+fix_highrisk.py
+fix_warn.py
+gen_ppt.py
+
+# Thesis output documents (personal)
+*.docx
+*.pptx
+*.xlsx
+~$*
+manual_converted.docx
+supplement_*.docx
+thesis_final*.docx
+thesis_report.pptx
+Improved_YOLOv13*.docx
+
+# Unrelated personal files
+古冰*
+
+# Prediction visualization (local, regeneratable)
+thesis_output/vis_*/
+thesis_output/fig_*/
+
+# Runs directory
+runs/

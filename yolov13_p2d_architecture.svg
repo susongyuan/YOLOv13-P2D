@@ -1,0 +1,309 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 390" font-family="Arial,'Microsoft YaHei','SimHei',sans-serif">
+<defs>
+  <marker id="a" markerWidth="5" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0,5 2,0 4" fill="#555"/></marker>
+  <marker id="ag" markerWidth="5" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0,5 2,0 4" fill="#0E6655"/></marker>
+</defs>
+<rect width="680" height="390" fill="#fff"/>
+
+<!-- ===== 区域边框 ===== -->
+<rect x="14" y="16" width="82" height="262" rx="3" fill="none" stroke="#aaa" stroke-width="0.8" stroke-dasharray="4,2"/>
+<rect x="100" y="16" width="330" height="262" rx="3" fill="none" stroke="#aaa" stroke-width="0.8" stroke-dasharray="4,2"/>
+<rect x="434" y="16" width="60" height="262" rx="3" fill="none" stroke="#aaa" stroke-width="0.8" stroke-dasharray="4,2"/>
+<text x="16" y="12" font-size="8" fill="#555" font-style="italic">骨干网络</text>
+<text x="265" y="12" text-anchor="middle" font-size="8" fill="#555" font-style="italic">Neck</text>
+<text x="464" y="12" text-anchor="middle" font-size="8" fill="#555" font-style="italic">Head</text>
+<text x="108" y="27" text-anchor="middle" font-size="5.5" fill="#C0392B">FullPAD</text>
+<text x="108" y="33" text-anchor="middle" font-size="5.5" fill="#C0392B">Tunnel</text>
+<text x="272" y="27" text-anchor="middle" font-size="5.5" fill="#C0392B">FullPAD</text>
+<text x="272" y="33" text-anchor="middle" font-size="5.5" fill="#C0392B">Tunnel</text>
+<text x="416" y="27" text-anchor="middle" font-size="5.5" fill="#C0392B">FullPAD</text>
+<text x="416" y="33" text-anchor="middle" font-size="5.5" fill="#C0392B">Tunnel</text>
+
+<!-- ================================================================ -->
+<!--    B→HyperACE 竖直总线 (先绘制，在底层)                            -->
+<!-- ================================================================ -->
+<!-- B竖直总线 x=88: 从P3向下到HyperACE -->
+<line x1="88" y1="136" x2="88" y2="304" stroke="#B07DD6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<line x1="88" y1="304" x2="112" y2="304" stroke="#B07DD6" stroke-width="0.9" stroke-dasharray="3,2" marker-end="url(#a)"/>
+<!-- B₃水平stub -->
+<line x1="76" y1="136" x2="88" y2="136" stroke="#B07DD6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<!-- B₄水平stub -->
+<line x1="76" y1="192" x2="88" y2="192" stroke="#B07DD6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<!-- B₅水平stub -->
+<line x1="76" y1="248" x2="88" y2="248" stroke="#B07DD6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<!-- 节点圆点 -->
+<circle cx="88" cy="136" r="1.5" fill="#B07DD6"/>
+<circle cx="88" cy="192" r="1.5" fill="#B07DD6"/>
+<circle cx="88" cy="248" r="1.5" fill="#B07DD6"/>
+<!-- B标签 -->
+<text x="80" y="131" font-size="6" font-weight="bold" fill="#555">B₃</text>
+<text x="80" y="187" font-size="6" font-weight="bold" fill="#555">B₄</text>
+<text x="80" y="243" font-size="6" font-weight="bold" fill="#555">B₅</text>
+
+<!-- ================================================================ -->
+<!--    H←HyperACE 竖直总线 (先绘制，在底层)                            -->
+<!-- ================================================================ -->
+<!-- H竖直总线 x=128: 从HyperACE向上到P3 -->
+<line x1="128" y1="300" x2="128" y2="136" stroke="#9B59B6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<!-- H₃水平stub →⊕P3 -->
+<line x1="128" y1="136" x2="116" y2="136" stroke="#9B59B6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<!-- H₄水平stub →⊕P4 -->
+<line x1="128" y1="192" x2="116" y2="192" stroke="#9B59B6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<!-- H₅水平stub →⊕P5 -->
+<line x1="128" y1="248" x2="116" y2="248" stroke="#9B59B6" stroke-width="0.9" stroke-dasharray="3,2"/>
+<circle cx="128" cy="136" r="1.5" fill="#9B59B6"/>
+<circle cx="128" cy="192" r="1.5" fill="#9B59B6"/>
+<circle cx="128" cy="248" r="1.5" fill="#9B59B6"/>
+<!-- H特征小平行四边形 -->
+<polygon points="120,293 130,293 127,300 117,300" fill="#E8DFF0" stroke="#9B59B6" stroke-width="0.6"/>
+<text x="124" y="290" font-size="5" fill="#7B68AE">H₃</text>
+<polygon points="140,293 150,293 147,300 137,300" fill="#E8DFF0" stroke="#9B59B6" stroke-width="0.6"/>
+<text x="144" y="290" font-size="5" fill="#7B68AE">H₄</text>
+<polygon points="160,293 170,293 167,300 157,300" fill="#E8DFF0" stroke="#9B59B6" stroke-width="0.6"/>
+<text x="164" y="290" font-size="5" fill="#7B68AE">H₅</text>
+<!-- H总线底部连接到三个H块 -->
+<line x1="128" y1="300" x2="124" y2="296" stroke="#9B59B6" stroke-width="0.7" stroke-dasharray="2,1"/>
+<line x1="128" y1="300" x2="144" y2="296" stroke="#9B59B6" stroke-width="0.7" stroke-dasharray="2,1"/>
+<line x1="128" y1="300" x2="164" y2="296" stroke="#9B59B6" stroke-width="0.7" stroke-dasharray="2,1"/>
+
+<!-- B→⊕ 水平箭头 (从bus穿过⊕到Neck) -->
+<line x1="88" y1="136" x2="99" y2="136" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<line x1="88" y1="192" x2="99" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<line x1="88" y1="248" x2="99" y2="248" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+
+<!-- ===== 骨干网络 ===== -->
+<rect x="22" y="18" width="54" height="12" rx="2" fill="#F2F2F2" stroke="#999" stroke-width="0.7"/>
+<text x="49" y="27" text-anchor="middle" font-size="7" fill="#444">输入</text>
+<line x1="49" y1="30" x2="49" y2="34" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<rect x="22" y="36" width="54" height="15" rx="2" fill="#DCE8F5" stroke="#5B9BD5" stroke-width="0.8"/>
+<text x="49" y="47" text-anchor="middle" font-size="7" fill="#2B5797">Conv</text>
+<line x1="49" y1="51" x2="49" y2="55" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<rect x="22" y="57" width="54" height="15" rx="2" fill="#DCE8F5" stroke="#5B9BD5" stroke-width="0.8"/>
+<text x="49" y="68" text-anchor="middle" font-size="7" fill="#2B5797">Conv</text>
+<line x1="49" y1="72" x2="49" y2="76" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<!-- DS-C3k2 P2 → B₂ -->
+<rect x="22" y="78" width="54" height="15" rx="2" fill="#E2EFDA" stroke="#70AD47" stroke-width="0.8"/>
+<text x="49" y="89" text-anchor="middle" font-size="6.5" fill="#3B6E22">DS-C3k2</text>
+<line x1="49" y1="93" x2="49" y2="100" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<!-- B₂ 标签 -->
+<line x1="76" y1="85" x2="84" y2="85" stroke="#555" stroke-width="0.7"/>
+<text x="80" y="81" font-size="6" font-weight="bold" fill="#555">B₂</text>
+<!-- Conv P3 -->
+<rect x="22" y="102" width="54" height="15" rx="2" fill="#DCE8F5" stroke="#5B9BD5" stroke-width="0.8"/>
+<text x="49" y="113" text-anchor="middle" font-size="7" fill="#2B5797">Conv</text>
+<line x1="49" y1="117" x2="49" y2="128" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<!-- DS-C3k2 P3 → B₃ -->
+<rect x="22" y="130" width="54" height="15" rx="2" fill="#E2EFDA" stroke="#70AD47" stroke-width="0.8"/>
+<text x="49" y="141" text-anchor="middle" font-size="6.5" fill="#3B6E22">DS-C3k2</text>
+<line x1="49" y1="145" x2="49" y2="158" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<!-- DS卷积 P4 -->
+<rect x="22" y="160" width="54" height="15" rx="2" fill="#E0D8E8" stroke="#7B68AE" stroke-width="0.8"/>
+<text x="49" y="171" text-anchor="middle" font-size="6.5" fill="#5B4A8A">DS卷积</text>
+<line x1="49" y1="175" x2="49" y2="184" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<!-- A2C2f P4 → B₄ -->
+<rect x="22" y="186" width="54" height="15" rx="2" fill="#E8DFF0" stroke="#9B59B6" stroke-width="0.8"/>
+<text x="49" y="197" text-anchor="middle" font-size="7" fill="#6C3483">A2C2f</text>
+<line x1="49" y1="201" x2="49" y2="214" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<!-- DS卷积 P5 -->
+<rect x="22" y="216" width="54" height="15" rx="2" fill="#E0D8E8" stroke="#7B68AE" stroke-width="0.8"/>
+<text x="49" y="227" text-anchor="middle" font-size="6.5" fill="#5B4A8A">DS卷积</text>
+<line x1="49" y1="231" x2="49" y2="240" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<!-- A2C2f P5 → B₅ -->
+<rect x="22" y="242" width="54" height="15" rx="2" fill="#E8DFF0" stroke="#9B59B6" stroke-width="0.8"/>
+<text x="49" y="253" text-anchor="middle" font-size="7" fill="#6C3483">A2C2f</text>
+
+<!-- ===== HyperACE ===== -->
+<rect x="112" y="304" width="130" height="22" rx="4" fill="#FCE4D6" stroke="#ED7D31" stroke-width="1.2"/>
+<text x="177" y="319" text-anchor="middle" font-size="9" font-weight="bold" fill="#C55A11">HyperACE</text>
+
+<!-- ===== FullPAD Tunnel 第1列 ⊕ ===== -->
+<circle cx="108" cy="136" r="7.5" fill="#FDEBD0" stroke="#E67E22" stroke-width="1"/>
+<text x="108" y="139.5" text-anchor="middle" font-size="8" font-weight="bold" fill="#D35400">⊕</text>
+<circle cx="108" cy="192" r="7.5" fill="#FDEBD0" stroke="#E67E22" stroke-width="1"/>
+<text x="108" y="195.5" text-anchor="middle" font-size="8" font-weight="bold" fill="#D35400">⊕</text>
+<circle cx="108" cy="248" r="7.5" fill="#FDEBD0" stroke="#E67E22" stroke-width="1"/>
+<text x="108" y="251.5" text-anchor="middle" font-size="8" font-weight="bold" fill="#D35400">⊕</text>
+
+<!-- ===== 自顶向下 Neck ===== -->
+<!-- P5→上采样→P4 -->
+<line x1="116" y1="248" x2="150" y2="248" stroke="#555" stroke-width="0.8"/>
+<line x1="150" y1="248" x2="150" y2="218" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="138" y="212" width="30" height="12" rx="2" fill="#D9EDF7" stroke="#4BACC6" stroke-width="0.7"/>
+<text x="153" y="221" text-anchor="middle" font-size="5.5" fill="#1A7A8A">上采样</text>
+<line x1="150" y1="212" x2="150" y2="200" stroke="#555" stroke-width="0.7"/>
+
+<!-- FullPAD P4 → 拼接P4 -->
+<line x1="116" y1="192" x2="146" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<!-- 拼接 P4 -->
+<rect x="148" y="185" width="36" height="15" rx="2" fill="#FFF2CC" stroke="#FFC000" stroke-width="0.8"/>
+<text x="166" y="196" text-anchor="middle" font-size="6.5" fill="#BF8F00">拼接</text>
+<!-- →DS-C3k2 P4 (TD) -->
+<line x1="184" y1="192" x2="192" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="194" y="185" width="54" height="15" rx="2" fill="#E2EFDA" stroke="#70AD47" stroke-width="0.8"/>
+<text x="221" y="196" text-anchor="middle" font-size="6.5" fill="#3B6E22">DS-C3k2</text>
+
+<!-- DS-C3k2 P4 → 上采样 P4→P3 -->
+<line x1="221" y1="185" x2="221" y2="174" stroke="#555" stroke-width="0.7"/>
+<line x1="221" y1="174" x2="153" y2="174" stroke="#555" stroke-width="0.7"/>
+<line x1="153" y1="174" x2="153" y2="162" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<rect x="138" y="154" width="30" height="12" rx="2" fill="#D9EDF7" stroke="#4BACC6" stroke-width="0.7"/>
+<text x="153" y="163" text-anchor="middle" font-size="5.5" fill="#1A7A8A">上采样</text>
+<line x1="153" y1="154" x2="153" y2="144" stroke="#555" stroke-width="0.7"/>
+
+<!-- FullPAD P3 → 拼接P3 -->
+<line x1="116" y1="136" x2="146" y2="136" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<!-- 拼接 P3 -->
+<rect x="148" y="129" width="36" height="15" rx="2" fill="#FFF2CC" stroke="#FFC000" stroke-width="0.8"/>
+<text x="166" y="140" text-anchor="middle" font-size="6.5" fill="#BF8F00">拼接</text>
+<!-- →DS-C3k2 P3 (TD) -->
+<line x1="184" y1="136" x2="192" y2="136" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="194" y="129" width="54" height="15" rx="2" fill="#E2EFDA" stroke="#70AD47" stroke-width="0.8"/>
+<text x="221" y="140" text-anchor="middle" font-size="6.5" fill="#3B6E22">DS-C3k2</text>
+
+<!-- ===== FullPAD Tunnel 第2列 ⊕ ===== -->
+<line x1="248" y1="136" x2="262" y2="136" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<circle cx="272" cy="136" r="7.5" fill="#FDEBD0" stroke="#E67E22" stroke-width="1"/>
+<text x="272" y="139.5" text-anchor="middle" font-size="8" font-weight="bold" fill="#D35400">⊕</text>
+<line x1="248" y1="192" x2="262" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<circle cx="272" cy="192" r="7.5" fill="#FDEBD0" stroke="#E67E22" stroke-width="1"/>
+<text x="272" y="195.5" text-anchor="middle" font-size="8" font-weight="bold" fill="#D35400">⊕</text>
+
+<!-- ===== 自底向上 Head ===== -->
+<!-- P3: Conv → 向下 -->
+<line x1="280" y1="136" x2="290" y2="136" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="292" y="129" width="36" height="15" rx="2" fill="#DCE8F5" stroke="#5B9BD5" stroke-width="0.8"/>
+<text x="310" y="140" text-anchor="middle" font-size="6.5" fill="#2B5797">Conv</text>
+<line x1="310" y1="144" x2="310" y2="183" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+
+<!-- P4: FullPAD2→拼接 -->
+<line x1="280" y1="192" x2="290" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="292" y="185" width="36" height="15" rx="2" fill="#FFF2CC" stroke="#FFC000" stroke-width="0.8"/>
+<text x="310" y="196" text-anchor="middle" font-size="6.5" fill="#BF8F00">拼接</text>
+<line x1="328" y1="192" x2="336" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="338" y="185" width="54" height="15" rx="2" fill="#E2EFDA" stroke="#70AD47" stroke-width="0.8"/>
+<text x="365" y="196" text-anchor="middle" font-size="6.5" fill="#3B6E22">DS-C3k2</text>
+
+<!-- DS-C3k2 P4(BU) Conv向下到P5 -->
+<line x1="365" y1="200" x2="365" y2="220" stroke="#555" stroke-width="0.7"/>
+<rect x="352" y="220" width="28" height="10" rx="2" fill="#DCE8F5" stroke="#5B9BD5" stroke-width="0.5"/>
+<text x="366" y="228" text-anchor="middle" font-size="5" fill="#2B5797">Conv</text>
+<line x1="366" y1="230" x2="366" y2="240" stroke="#555" stroke-width="0.7"/>
+<line x1="366" y1="241" x2="328" y2="241" stroke="#555" stroke-width="0.7"/>
+
+<!-- P5 skip H₅ -->
+<line x1="116" y1="255" x2="286" y2="255" stroke="#999" stroke-width="0.6" stroke-dasharray="3,2"/>
+<line x1="286" y1="255" x2="286" y2="248" stroke="#999" stroke-width="0.6"/>
+<line x1="286" y1="248" x2="290" y2="248" stroke="#999" stroke-width="0.6" marker-end="url(#a)"/>
+<text x="200" y="262" font-size="5" fill="#999">H₅</text>
+
+<!-- P5: 拼接→DS-C3k2 -->
+<rect x="292" y="241" width="36" height="15" rx="2" fill="#FFF2CC" stroke="#FFC000" stroke-width="0.8"/>
+<text x="310" y="252" text-anchor="middle" font-size="6.5" fill="#BF8F00">拼接</text>
+<line x1="328" y1="248" x2="336" y2="248" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="338" y="241" width="54" height="15" rx="2" fill="#E2EFDA" stroke="#70AD47" stroke-width="0.8"/>
+<text x="365" y="252" text-anchor="middle" font-size="6.5" fill="#3B6E22">DS-C3k2</text>
+
+<!-- ===== FullPAD Tunnel 第3列 ⊕ ===== -->
+<line x1="392" y1="192" x2="406" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<circle cx="416" cy="192" r="7.5" fill="#FDEBD0" stroke="#E67E22" stroke-width="1"/>
+<text x="416" y="195.5" text-anchor="middle" font-size="8" font-weight="bold" fill="#D35400">⊕</text>
+<line x1="392" y1="248" x2="406" y2="248" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<circle cx="416" cy="248" r="7.5" fill="#FDEBD0" stroke="#E67E22" stroke-width="1"/>
+<text x="416" y="251.5" text-anchor="middle" font-size="8" font-weight="bold" fill="#D35400">⊕</text>
+
+<!-- ===== 检测 P3/P4/P5 ===== -->
+<!-- P3 →检测 (from FullPAD2) -->
+<line x1="280" y1="130" x2="280" y2="125" stroke="#555" stroke-width="0.6"/>
+<line x1="280" y1="125" x2="442" y2="125" stroke="#555" stroke-width="0.6"/>
+<line x1="442" y1="125" x2="442" y2="129" stroke="#555" stroke-width="0.6" marker-end="url(#a)"/>
+<rect x="438" y="130" width="40" height="14" rx="2" fill="#F2DCDB" stroke="#C0504D" stroke-width="0.8"/>
+<text x="458" y="141" text-anchor="middle" font-size="6.5" fill="#943634">检测</text>
+
+<!-- P4 →检测 -->
+<line x1="424" y1="192" x2="436" y2="192" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="438" y="185" width="40" height="14" rx="2" fill="#F2DCDB" stroke="#C0504D" stroke-width="0.8"/>
+<text x="458" y="196" text-anchor="middle" font-size="6.5" fill="#943634">检测</text>
+
+<!-- P5 →检测 -->
+<line x1="424" y1="248" x2="436" y2="248" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="438" y="241" width="40" height="14" rx="2" fill="#F2DCDB" stroke="#C0504D" stroke-width="0.8"/>
+<text x="458" y="252" text-anchor="middle" font-size="6.5" fill="#943634">检测</text>
+
+<!-- ================================================================ -->
+<!--     改进① P2 高分辨率检测分支 (绿框)                                -->
+<!-- ================================================================ -->
+<rect x="260" y="40" width="260" height="55" rx="4" fill="#E8F8F5" stroke="#1ABC9C" stroke-width="1.5" stroke-dasharray="5,2"/>
+<text x="390" y="50" text-anchor="middle" font-size="6" font-weight="bold" fill="#0E6655">改进① P2 高分辨率检测分支</text>
+
+<!-- FullPAD2 P3 →上采样→P2 -->
+<line x1="272" y1="128" x2="272" y2="106" stroke="#0E6655" stroke-width="0.8"/>
+<line x1="272" y1="106" x2="286" y2="106" stroke="#0E6655" stroke-width="0.8"/>
+<line x1="286" y1="106" x2="286" y2="97" stroke="#0E6655" stroke-width="0.8" marker-end="url(#ag)"/>
+<rect x="274" y="97" width="28" height="11" rx="2" fill="#D9EDF7" stroke="#4BACC6" stroke-width="0.7"/>
+<text x="288" y="105" text-anchor="middle" font-size="5.5" fill="#1A7A8A">上采样</text>
+<line x1="288" y1="97" x2="288" y2="86" stroke="#555" stroke-width="0.7"/>
+
+<!-- B₂跳跃连接 -->
+<path d="M84,85 L84,57 L310,57 L310,63" fill="none" stroke="#0E6655" stroke-width="0.7" stroke-dasharray="4,2" marker-end="url(#ag)"/>
+<text x="196" y="54" text-anchor="middle" font-size="5.5" fill="#0E6655">B₂ 跳跃连接</text>
+<!-- Conv 1×1 -->
+<rect x="298" y="63" width="32" height="10" rx="2" fill="#DCE8F5" stroke="#5B9BD5" stroke-width="0.6"/>
+<text x="314" y="71" text-anchor="middle" font-size="5" fill="#2B5797">Conv1×1</text>
+<line x1="314" y1="73" x2="314" y2="77" stroke="#555" stroke-width="0.6"/>
+
+<!-- 拼接 P2 -->
+<rect x="300" y="78" width="36" height="13" rx="2" fill="#FFF2CC" stroke="#FFC000" stroke-width="0.8"/>
+<text x="318" y="88" text-anchor="middle" font-size="6.5" fill="#BF8F00">拼接</text>
+<line x1="288" y1="88" x2="298" y2="84" stroke="#555" stroke-width="0.6"/>
+
+<!-- →DS-C3k2 P2 -->
+<line x1="336" y1="84" x2="344" y2="84" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<rect x="346" y="78" width="54" height="13" rx="2" fill="#E2EFDA" stroke="#70AD47" stroke-width="0.8"/>
+<text x="373" y="88" text-anchor="middle" font-size="6.5" fill="#3B6E22">DS-C3k2</text>
+
+<!-- →检测 P2 -->
+<line x1="400" y1="84" x2="436" y2="84" stroke="#555" stroke-width="0.7" marker-end="url(#a)"/>
+<rect x="438" y="78" width="40" height="13" rx="2" fill="#F2DCDB" stroke="#C0504D" stroke-width="0.8"/>
+<text x="458" y="88" text-anchor="middle" font-size="6.5" fill="#943634">检测</text>
+
+<!-- ================================================================ -->
+<!--     改进② DIoU-NMS (紫框)                                         -->
+<!-- ================================================================ -->
+<rect x="498" y="70" width="66" height="200" rx="4" fill="#F3E8FF" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="5,2"/>
+<text x="531" y="82" text-anchor="middle" font-size="6" font-weight="bold" fill="#5B21B6">改进②</text>
+
+<!-- 4个检测→汇聚→DIoU-NMS -->
+<line x1="478" y1="84" x2="510" y2="155" stroke="#555" stroke-width="0.6"/>
+<line x1="478" y1="137" x2="510" y2="155" stroke="#555" stroke-width="0.6"/>
+<line x1="478" y1="192" x2="510" y2="170" stroke="#555" stroke-width="0.6"/>
+<line x1="478" y1="248" x2="510" y2="185" stroke="#555" stroke-width="0.6"/>
+
+<rect x="506" y="140" width="54" height="40" rx="4" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1"/>
+<text x="533" y="158" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#5B21B6">DIoU</text>
+<text x="533" y="170" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#5B21B6">NMS</text>
+
+<!-- →输出 -->
+<line x1="533" y1="180" x2="533" y2="200" stroke="#555" stroke-width="0.8" marker-end="url(#a)"/>
+<rect x="514" y="202" width="38" height="14" rx="2" fill="#F9FAFB" stroke="#6B7280" stroke-width="0.8"/>
+<text x="533" y="213" text-anchor="middle" font-size="7" fill="#444">输出</text>
+
+<!-- ================================================================ -->
+<!--     改进③ 场景增强 (橙色标注)                                       -->
+<!-- ================================================================ -->
+<rect x="498" y="228" width="66" height="36" rx="4" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5" stroke-dasharray="5,2"/>
+<text x="531" y="242" text-anchor="middle" font-size="6" font-weight="bold" fill="#92400E">改进③</text>
+<text x="531" y="254" text-anchor="middle" font-size="6" fill="#B45309">场景增强</text>
+<text x="531" y="262" text-anchor="middle" font-size="5" fill="#B45309">(训练策略)</text>
+
+<!-- ===== 标题 ===== -->
+<text x="340" y="345" text-anchor="middle" font-size="12" font-weight="bold" fill="#222">YOLOv13-P2D 架构</text>
+
+<!-- ===== 改进点图例 ===== -->
+<rect x="130" y="356" width="8" height="8" rx="1" fill="#E8F8F5" stroke="#1ABC9C" stroke-width="1"/>
+<text x="142" y="364" font-size="7" fill="#0E6655">改进① P2高分辨率检测分支 (小目标检测)</text>
+<rect x="340" y="356" width="8" height="8" rx="1" fill="#F3E8FF" stroke="#7C3AED" stroke-width="1"/>
+<text x="352" y="364" font-size="7" fill="#5B21B6">改进② DIoU-NMS (改进后处理)</text>
+<rect x="130" y="370" width="8" height="8" rx="1" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+<text x="142" y="378" font-size="7" fill="#92400E">改进③ 场景增强 (果园背景随机替换训练策略)</text>
+
+</svg>
